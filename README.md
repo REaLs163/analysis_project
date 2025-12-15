@@ -3,13 +3,13 @@
 
 # ⚙️ Гайд по развёртке и настройке инфраструктуры
 
-1. Перед началом нужно [зарегистрировать аккаунт в Yandex Cloud](https://yandex.cloud/ru/docs/billing/quickstart/#individuals_1).
+Перед началом нужно [зарегистрировать аккаунт в Yandex Cloud](https://yandex.cloud/ru/docs/billing/quickstart/#individuals_1).
 
-2. Затем создайте [первое облако](https://yandex.cloud/ru/docs/resource-manager/operations/cloud/create) и [каталог](https://yandex.cloud/ru/docs/resource-manager/operations/folder/create).
+Затем создайте [первое облако](https://yandex.cloud/ru/docs/resource-manager/operations/cloud/create) и [каталог](https://yandex.cloud/ru/docs/resource-manager/operations/folder/create).
 
-3. Далее нужно создать [сервисный аккаунт](https://yandex.cloud/ru/docs/iam/quickstart-sa) с ролью `admin` на католог, от имени которого будут выполнятся операции.
+Далее нужно создать [сервисный аккаунт](https://yandex.cloud/ru/docs/iam/quickstart-sa) с ролью `admin` на католог, от имени которого будут выполнятся операции.
 
-4. Создайте [бакет](https://yandex.cloud/ru/docs/storage/operations/buckets/create) в сервисе Object Storage. Для этого:
+Создайте [бакет](https://yandex.cloud/ru/docs/storage/operations/buckets/create) в сервисе Object Storage. Для этого:
 
 1) Перейдите в сервис "Object Storage".
 2) Справа сверху нажмите кнопку "Создать бакет".
@@ -20,11 +20,11 @@
 7) Все остальные параметры оставить по умолчанию.
 8) Нажмите на кнопку "Создать".
 
-5. После создания бакета, создайте в нём две папки: input и output. В первую буду загружаться все PDF-файлы, а во вторую будут помещаться автоматически файлы анализов с отклонениями.
+После создания бакета, создайте в нём две папки: input и output. В первую буду загружаться все PDF-файлы, а во вторую будут помещаться автоматически файлы анализов с отклонениями.
 
-6. [Получите](https://yandex.cloud/ru/docs/iam/concepts/authorization/access-key) статические ключи доступа для аутентификации сервисного аккаунта в S3. Они понадобятся в будущем, при настройке экземпляра Cloud Functions. По поводу ключей отмечу, что их нужно будет сохранить отдельно сразу, т.к. потом мы их не увидим.
+[Получите](https://yandex.cloud/ru/docs/iam/concepts/authorization/access-key) статические ключи доступа для аутентификации сервисного аккаунта в S3. Они понадобятся в будущем, при настройке экземпляра Cloud Functions. По поводу ключей отмечу, что их нужно будет сохранить отдельно сразу, т.к. потом мы их не увидим.
 
-7. Создайте экземпляр [функции и её первую версию на Python 3.12](https://yandex.cloud/ru/docs/functions/quickstart/create-function/python-function-quickstart) в сервисе Cloud Functions. Для этого:
+Создайте экземпляр [функции и её первую версию на Python 3.12](https://yandex.cloud/ru/docs/functions/quickstart/create-function/python-function-quickstart) в сервисе Cloud Functions. Для этого:
 
 1) Перейдите в сервис "Cloud Functions".
 2) Справа сверху нажмите кнопку "Создать функцию".
@@ -55,7 +55,7 @@ INPUT_PREFIX=input/
 OUTPUT_PREFIX=output/
 ```
 
-8. Перейдем к настройке функции:
+Перейдем к настройке функции:
 
 1) Точка входа: `cloud_function.handler`.
 2) Таймаут: 5 сек.
@@ -65,7 +65,7 @@ OUTPUT_PREFIX=output/
 6) Нажмите на кнопку "Создать".
 7) Перейдите в "Обзор" и добавьте метку.
 
-9. Теперь нам нужно создать [триггер](https://yandex.cloud/ru/docs/functions/operations/trigger/os-trigger-create), который автоматически будет вызывать экземпляр функции при загрузке PDF-файлов в папку `input` в бакет. Для этого:
+Теперь нам нужно создать [триггер](https://yandex.cloud/ru/docs/functions/operations/trigger/os-trigger-create), который автоматически будет вызывать экземпляр функции при загрузке PDF-файлов в папку `input` в бакет. Для этого:
 
 1) На левой панели выбирете "Триггер".
 2) Справа сверху нажмите кнопку "Создать триггер".
@@ -80,7 +80,7 @@ OUTPUT_PREFIX=output/
 11) В поле "Сервисный аккаунт" выбирете раннее созданный аккаунт.
 12) Нажмите на кнопку "Создать".
 
-10. Протестируйте работу инфраструктуры. Для этого загрузите несколько файлов в бакет в папку `input/`. Через время в нашем фолдере появится новый сервис Cloud Logging. Перейдите в него и выполните следующие действия:
+Протестируйте работу инфраструктуры. Для этого загрузите несколько файлов в бакет в папку `input/`. Через время в нашем фолдере появится новый сервис Cloud Logging. Перейдите в него и выполните следующие действия:
 
 1) Выбирете появившуюся группу.
 2) Перейдите в "Обзор" и справа сверху нажмите кнопку "Редактировать".
