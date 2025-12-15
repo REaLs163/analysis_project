@@ -87,6 +87,17 @@ OUTPUT_PREFIX=output/
 3) Измените праметр "Срок хранения логов" на 1 час.
 4) Сохраните изменения.
 
+# По желанию
+
+Можно настроить жизненный цикл объектов в бакете в папке `input`. Так вы сможете автоматически удалять файлы из неё по прошествии какого-то времени. Подробнее об этом пишут [здесь](https://yandex.cloud/ru/docs/storage/operations/buckets/lifecycles).
+
+# Тарификация
+
+Используемые сервисы умеют [Free tier](https://yandex.cloud/ru/docs/billing/concepts/serverless-free-tier).
+Подробнее о тарификации Object Storage пишут [тут](https://yandex.cloud/ru/docs/storage/pricing).
+Подробнее о тарификации Cloud Functions пишут [тут](https://yandex.cloud/ru/docs/functions/pricing).
+Подробнее о тарификации Cloud Logging пишут [тут](https://yandex.cloud/ru/docs/logging/pricing).
+
 # Требования к функции
 
 - Python 3.12+
