@@ -94,8 +94,11 @@ OUTPUT_PREFIX=output/
 # Тарификация
 
 Используемые сервисы умеют [Free tier](https://yandex.cloud/ru/docs/billing/concepts/serverless-free-tier).
+
 Подробнее о тарификации Object Storage пишут [тут](https://yandex.cloud/ru/docs/storage/pricing).
+
 Подробнее о тарификации Cloud Functions пишут [тут](https://yandex.cloud/ru/docs/functions/pricing).
+
 Подробнее о тарификации Cloud Logging пишут [тут](https://yandex.cloud/ru/docs/logging/pricing).
 
 # Требования к функции
